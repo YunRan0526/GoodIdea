@@ -1,5 +1,5 @@
 <template>
-  <div class="baseLayout">
+  <div class="admin">
     <router-view></router-view>
   </div>
 </template>

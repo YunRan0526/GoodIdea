@@ -1,5 +1,5 @@
 <template>
-  <div class="baseLayout">
+  <div class="collection">
     <router-view></router-view>
   </div>
 </template>
