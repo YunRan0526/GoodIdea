@@ -1,7 +1,7 @@
 <template>
   <div class="yb-confirm-overlay" @click="layClick()">
     <transition name="yb-confirm-fade" @after-leave="cancel">
-      <div class="yb-confirm" @click.stop="contentClick" v-show="visible">
+      <div class="yb-confirm" v-show="visible">
         <div
           class="header"
           :style="{
@@ -18,13 +18,18 @@
             {{ content }}
           </template>
         </div>
-        <div class="footer"></div>
+        <div class="footer">
+          <div class="btnContainer">
+            <YbButton circle class="btn cancel"></YbButton>
+            <YbButton type="error" circle class="btn ok"></YbButton>
+          </div>
+        </div>
       </div>
     </transition>
   </div>
 </template>
-<script setup>
-import { onMounted, ref, onUnmounted } from "vue";
+<script setup lang="ts">
+import YbButton from "/src/components/button/index.vue";
 const props = defineProps({
   content: {
     default: () => {
@@ -42,7 +47,7 @@ const confirm = () => {
   emits("confirm");
 };
 const layClick = () => {
-  visible.value = false;
+  // visible.value = false;
 };
 onMounted(() => {
   visible.value = true;
@@ -50,11 +55,6 @@ onMounted(() => {
 onUnmounted(() => {});
 </script>
 <style lang="scss" scoped>
-$theme-black: #283c5f;
-$theme-white: #faf7d9;
-$theme-green: #c3ce5f;
-$theme-blue: #4aa9a4;
-$theme-red: #c45c66;
 .yb-confirm-overlay {
   position: absolute;
   left: 0;
@@ -82,8 +82,20 @@ $theme-red: #c45c66;
       background-color: #eeeeee;
     }
     .footer {
+      position: relative;
       width: 100%;
       height: 70px;
+      .btnContainer {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: row;
+        .btn {
+          margin: 0 30px;
+        }
+      }
     }
   }
   .yb-confirm-fade-enter-from,

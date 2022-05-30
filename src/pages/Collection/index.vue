@@ -1,16 +1,17 @@
 <template>
   <div>
     <h1>collections</h1>
-    <div>
-      <span @click="confirm"> click</span>
+    <div style="">
+      <YbButton circle @click="confirm"> click</YbButton>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import $confirm from "/src/components/$confirm/$confirm.js";
+import useConfirm from "/src/components/confirm/useConfirm.js";
+import YbButton from "/src/components/button/index.vue";
 const confirm = () => {
-  $confirm("xxxxxxxxx");
+  useConfirm("xxxxxxxxx");
 };
 </script>
 
