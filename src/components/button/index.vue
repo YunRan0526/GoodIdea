@@ -5,7 +5,9 @@
     :icon="icon"
     :circle="circle"
     v-if="!circle"
-  ></NormalBtn>
+  >
+    <slot></slot>
+  </NormalBtn>
   <CircleBtn
     :type="type"
     :size="size"

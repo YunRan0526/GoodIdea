@@ -2,6 +2,7 @@ const AdminRoute: Object = {
   path: "/admin",
   name: "Admin",
   component: () => import("/src/components/AdminLayout.vue"),
+  redirect: "/admin/my",
   children: [
     {
       path: "/admin/my",
@@ -11,6 +12,5 @@ const AdminRoute: Object = {
       component: () => import("/src/pages/Admin/index.vue"),
     },
   ],
-  redirect: "/admin/my",
 };
 export default AdminRoute;

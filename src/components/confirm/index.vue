@@ -4,25 +4,53 @@
       <div class="yb-confirm" v-show="visible">
         <div
           class="header"
-          :style="{
-            height: `${open ? 70 : 200}px`,
-          }"
-        ></div>
-        <div
-          class="content"
-          :style="{
-            height: `${open ? 300 : 3}px`,
+          :class="{
+            'scale-header': !showCloseBtn,
           }"
         >
-          <template v-show="open">
-            {{ content }}
-          </template>
+          <div
+            class="message"
+            :class="{
+              fadeout: !showCloseBtn,
+            }"
+          >
+            您收到了一条信息。
+          </div>
+        </div>
+        <div
+          class="content"
+          :class="{
+            'open-message': !showCloseBtn,
+          }"
+        >
+          <article>
+            <h4>用户须知</h4>
+            <p>111111111111111111</p>
+            <p>222222222222222222</p>
+            <p>333333333333333333</p>
+            <p>444444444444444444</p>
+          </article>
         </div>
         <div class="footer">
-          <div class="btnContainer">
-            <YbButton circle class="btn cancel"></YbButton>
-            <YbButton type="error" circle class="btn ok"></YbButton>
-          </div>
+          <YbButton
+            :class="{
+              btn: true,
+              'to-right': !showCloseBtn,
+              ok: true,
+            }"
+            circle
+            @click="okFun"
+          ></YbButton>
+          <YbButton
+            :class="{
+              'hidden-button': !showCloseBtn,
+              btn: true,
+              cancel: true,
+            }"
+            type="error"
+            circle
+            @click="closeFun"
+          ></YbButton>
         </div>
       </div>
     </transition>
@@ -40,11 +68,25 @@ const props = defineProps({
 const emits = defineEmits(["cancel", "confirm"]);
 let visible = ref(false);
 const open = ref(false);
+const showCloseBtn = ref(true);
 const cancel = () => {
   emits("cancel");
 };
 const confirm = () => {
   emits("confirm");
+};
+const okFun = () => {
+  if (open.value) {
+    visible.value = false;
+    return;
+  }
+  open.value = true;
+  setTimeout(() => {
+    showCloseBtn.value = false;
+  }, 300);
+};
+const closeFun = () => {
+  visible.value = false;
 };
 const layClick = () => {
   // visible.value = false;
@@ -55,6 +97,69 @@ onMounted(() => {
 onUnmounted(() => {});
 </script>
 <style lang="scss" scoped>
+@keyframes hidden-button {
+  from {
+    transform: translateX(15px) translateY(-50%) scale(1);
+  }
+  to {
+    transform: translateX(15px) translateY(-50%) scale(0);
+  }
+}
+@keyframes to-right {
+  from {
+    transform: translateX(calc(-100% - 15px)) translateY(-50%);
+  }
+  to {
+    transform: translateX(calc(-50%)) translateY(-50%);
+  }
+}
+@keyframes open-message {
+  from {
+    height: 3px;
+  }
+  to {
+    height: 300px;
+  }
+}
+@keyframes scale-header {
+  from {
+    height: 200px;
+  }
+  to {
+    height: 70px;
+  }
+}
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.hidden-button {
+  animation: hidden-button 0.5s cubic-bezier(0.76, 0.02, 0.25, 1) 0.2s forwards;
+}
+.to-right {
+  animation: to-right 0.5s cubic-bezier(0.76, 0.02, 0.25, 1) 0.2s forwards;
+}
+.open-message {
+  animation: open-message 0.4s ease-out 0s forwards;
+}
+.scale-header {
+  animation: scale-header 0.4s ease-out 0s forwards;
+}
+.fadeout {
+  animation: fadeout 0.3s ease 0s forwards;
+}
 .yb-confirm-overlay {
   position: absolute;
   left: 0;
@@ -76,24 +181,85 @@ onUnmounted(() => {});
     box-shadow: 10px 10px 30px #ccc;
     .header {
       width: 100%;
-      height: 70px;
+      height: 200px;
+      overflow: hidden;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .message {
+        width: 280px;
+        font-weight: 700;
+        position: relative;
+        height: 40px;
+        border-radius: 2px;
+        line-height: 40px;
+        font-size: 20px;
+        color: #444;
+        text-align: center;
+        background-color: #eee;
+        margin: 0;
+        padding: 5px 20px;
+        &::after {
+          position: absolute;
+          left: 50%;
+          bottom: -15px;
+          -webkit-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+          content: "";
+          display: block;
+          width: 0;
+          height: 0;
+          border-top: solid 15px #eee;
+          border-left: solid 15px transparent;
+          border-right: solid 15px transparent;
+        }
+      }
     }
     .content {
       background-color: #eeeeee;
+      height: 3px;
+      overflow: hidden;
+      article {
+        width: 100%;
+        padding-top: 40px;
+        padding-bottom: 60px;
+        h4 {
+          font-size: 20px;
+          text-align: center;
+          margin: 0;
+          margin-bottom: 10px;
+        }
+        p {
+          font-size: 14px;
+          text-align: center;
+          line-height: 40px;
+          letter-spacing: 5px;
+          margin: 0;
+        }
+      }
     }
     .footer {
+      transition: 0.3s ease;
       position: relative;
       width: 100%;
       height: 70px;
-      .btnContainer {
+      .btn {
         position: absolute;
         top: 0;
         left: 50%;
-        transform: translate(-50%, -50%);
-        display: flex;
-        flex-direction: row;
-        .btn {
-          margin: 0 30px;
+      }
+      .ok {
+        transform: translateX(calc(-100% - 15px)) translateY(-50%);
+        &:active {
+          box-shadow: 0 0 50px #00aca5;
+        }
+      }
+      .cancel {
+        transform: translateX(15px) translateY(-50%);
+        &:active {
+          box-shadow: 0 0 50px #c45c66;
         }
       }
     }

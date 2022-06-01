@@ -1,4 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const router = useRouter();
+const routes = router.options.routes.splice(1, 4);
+</script>
 
 <template>
   <div class="ybw">
@@ -17,5 +20,9 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+.ybw {
+  width: 100%;
+  height: 100vh;
 }
 </style>

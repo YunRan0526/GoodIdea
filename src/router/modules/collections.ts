@@ -2,6 +2,7 @@ const CollectionsRoute: Object = {
   path: "/collections",
   name: "Collections",
   component: () => import("/src/components/CollectionLayout.vue"),
+  redirect: "/collections/my",
   children: [
     {
       path: "/collections/my",
@@ -11,6 +12,5 @@ const CollectionsRoute: Object = {
       component: () => import("/src/pages/Collection/index.vue"),
     },
   ],
-  redirect: "/collections/my",
 };
 export default CollectionsRoute;

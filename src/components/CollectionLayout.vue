@@ -4,6 +4,8 @@
   </div>
 </template>
 
-<script setup lang="'ts"></script>
+<script setup lang="ts">
+const router = useRouter();
+</script>
 
 <style lang="scss"></style>

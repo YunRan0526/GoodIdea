@@ -12,25 +12,30 @@ $error: #c45c66;
 $dark: #283c5f;
 $info: #faf7d9;
 .yb-button {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  line-height: 1.5;
 }
-.yb-button[size="mini"] {
+.yb-button[size="small"] {
+  letter-spacing: 5px;
   border-radius: 5px;
-  width: 100px;
-  height: 30px;
+  min-width: 60px;
+  padding: 2px 0;
 }
 .yb-button[size="normal"] {
-  border-radius: 10px;
-  width: 140px;
-  height: 40px;
+  letter-spacing: 5px;
+  border-radius: 5px;
+  min-width: 75px;
+  padding: 5px 0;
 }
 .yb-button[size="large"] {
-  border-radius: 15px;
-  width: 170px;
-  height: 50px;
+  letter-spacing: 7px;
+  border-radius: 10px;
+  line-height: 1.6;
+  width: 90px;
+  padding: 7px 0;
 }
 .yb-button[type="primary"] {
   background-color: $primary;

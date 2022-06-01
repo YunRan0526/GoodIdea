@@ -38,9 +38,7 @@ $info: #faf7d9;
 .yb-button[type="primary"] {
   background-color: $primary;
   color: #ffffff;
-  background-color: $primary;
   box-shadow: 0 0 10px $primary;
-  background-size: auto 42%;
   background-image: url("/src/assets/confirm/cancel.svg");
   &:hover {
     box-shadow: 0 0 40px $primary;
@@ -49,6 +47,8 @@ $info: #faf7d9;
 .yb-button[type="error"] {
   background-color: $error;
   color: #ffffff;
+  box-shadow: 0 0 10px $error;
+  background-size: auto 42%;
   background-image: url("/src/assets/confirm/ok.svg");
   &:hover {
     box-shadow: 0 0 40px $error;
@@ -57,6 +57,7 @@ $info: #faf7d9;
 .yb-button[type="dark"] {
   background-color: $dark;
   color: #ffffff;
+  box-shadow: 0 0 10px $dark;
   &:hover {
     box-shadow: 0 0 40px $dark;
   }
@@ -64,6 +65,7 @@ $info: #faf7d9;
 .yb-button[type="info"] {
   background-color: $info;
   color: $dark;
+  box-shadow: 0 0 10px $info;
   &:hover {
     box-shadow: 0 0 40px $info;
   }
