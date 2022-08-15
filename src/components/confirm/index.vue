@@ -25,10 +25,10 @@
         >
           <article>
             <h4>用户须知</h4>
-            <p>111111111111111111</p>
-            <p>222222222222222222</p>
-            <p>333333333333333333</p>
-            <p>444444444444444444</p>
+            <p>你好</p>
+            <p>这是我的个人博客</p>
+            <p>目前正在开发中</p>
+            <p>请稍等</p>
           </article>
         </div>
         <div class="footer">
@@ -178,7 +178,8 @@ onUnmounted(() => {});
     border-radius: 4px;
     transition: 0.3s ease-out;
     background-color: #fff;
-    box-shadow: 10px 10px 30px #ccc;
+    // box-shadow: 10px 10px 30px #ccc;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     .header {
       width: 100%;
       height: 200px;

@@ -5,18 +5,14 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    AButton: typeof import('ant-design-vue/es')['Button']
     AdminLayout: typeof import('./src/components/AdminLayout.vue')['default']
-    ALayout: typeof import('ant-design-vue/es')['Layout']
-    ALayoutContent: typeof import('ant-design-vue/es')['LayoutContent']
-    ALayoutHeader: typeof import('ant-design-vue/es')['LayoutHeader']
-    ALayoutSider: typeof import('ant-design-vue/es')['LayoutSider']
     BaseLayout: typeof import('./src/components/BaseLayout.vue')['default']
     Button: typeof import('./src/components/button/index.vue')['default']
     CircleBtn: typeof import('./src/components/button/circleBtn.vue')['default']
     CollectionLayout: typeof import('./src/components/CollectionLayout.vue')['default']
     Confirm: typeof import('./src/components/confirm/index.vue')['default']
-    LoginLayout: typeof import('./src/components/LoginLayout.vue')['default']
+    HomeLayout: typeof import('./src/components/HomeLayout.vue')['default']
+    MoveStar: typeof import('./src/components/MoveStar.vue')['default']
     NormalBtn: typeof import('./src/components/button/normalBtn.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

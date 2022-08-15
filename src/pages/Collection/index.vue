@@ -1,14 +1,9 @@
 <template>
   <div>
-    <div>
-      <YbButton @click="useConfirm">测试</YbButton>
-    </div>
+    <h1>Collection</h1>
   </div>
 </template>
 
-<script setup lang="ts">
-import YbButton from "/src/components/button/index.vue";
-import useConfirm from "/src/components/confirm/useConfirm.ts";
-</script>
+<script setup lang="ts"></script>
 
 <style lang="scss"></style>

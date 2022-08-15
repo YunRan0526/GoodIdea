@@ -1,8 +1,7 @@
 const CollectionsRoute: Object = {
-  path: "/collections",
-  name: "Collections",
-  component: () => import("/src/components/CollectionLayout.vue"),
-  redirect: "/collections/my",
+  path: "/collection",
+  name: "Collection",
+  component: () => import("/src/layout/CollectionLayout.vue"),
   children: [
     {
       path: "/collections/my",
